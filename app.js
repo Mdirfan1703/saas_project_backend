@@ -91,11 +91,8 @@ const connectDB = async () => {
 };
 
 // Connect to database
+// Only connect when running the server (both serverless and local will call this)
+// Export the app so serverless wrappers can use it without starting a listener here.
 connectDB();
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
 
 export default app;
